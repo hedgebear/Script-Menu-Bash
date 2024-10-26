@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Obter data e hora do sistema
-DATA=$(date +"%d de %B de %Y")
-HORA=$(date +"%H Horas e %M Minutos")
-
 # Informações estáticas
 echo "############################################################"
 echo "# IBMEC                                                    #"
@@ -12,11 +8,12 @@ echo "# Código: IBM8940                              Turma: 8001 #"
 echo "# Professor: Luiz Fernando T. de Farias                    #"
 echo "############################################################"
 echo "# Equipe Desenvolvedora:                                   #"
-echo "# Aluno: Lucas Fernandes Mosqueira                         #"
-echo "# Aluno: nomedosegundoaluno                                #"
+echo "# Aluno: Lucas Fernandes Mosqueira 202203369016            #"
+echo "# Aluna: Beatriz Turi Pinto de Araújo 202203795211         #"
+echo "# Aluno: Lucas José Silva Serejo 202202714356              #"
 echo "------------------------------------------------------------"
-echo "# Rio de Janeiro, $DATA                                    #"
-echo "# Hora do Sistema: $HORA                                   #"
+echo "# Rio de Janeiro, $(date +"%d de %B de %Y")                #"
+echo "# Hora do Sistema: $(date +"%H Horas e %M Minutos")        #"
 echo "############################################################"
 echo ""
 echo "Menu de Escolhas:"
