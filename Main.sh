@@ -16,17 +16,21 @@ echo "# Rio de Janeiro, $(date +"%d de %B de %Y")                #"
 echo "# Hora do Sistema: $(date +"%H Horas e %M Minutos")        #"
 echo "############################################################"
 echo ""
-echo "Menu de Escolhas:"
-echo "1) Opção interativa 1"
-echo "2) Opção interativa 2"
-echo "3) Opção interativa 3"
-echo "4) Opção interativa 4"
-echo "5) Finalizar o programa"
-echo ""
+exibir_menu_principal(){
+    echo "Menu de Escolhas:"
+    echo "1) Gerenciamento de Diretórios e Arquivos"
+    echo "2) Gerencimento de Disco"
+    echo "3) Gerenciamento de Usuários"
+    echo "4) Opção interativa 4"
+    echo "5) Finalizar o programa"
+    echo ""
+}
+
 
 # Loop para opções
 while true; do
-    read -p "Selecione uma opção: " opcao
+    exibir_menu_principal
+    read -p "Selecione uma opção do menu principal: " opcao
     case $opcao in
         1) ./opcao1.sh ;;
         2) ./opcao2.sh ;;
