@@ -1,17 +1,48 @@
 #!/bin/bash
 
-while true; do
-    # Cria arquivos com mensagens aleatórias
-    mkdir -p textos
-    for i in {1..5}; do
-        ARQ_NAME="textos/arquivo_$RANDOM.txt"
-        echo "Mensagem divertida $RANDOM" > "$ARQ_NAME"
-    done
-    echo "Cinco arquivos de texto com mensagens aleatórias foram criados na pasta 'textos'."
+exibir_menu_opcao_3(){
+    echo "Gerenciamento de Usuários - Escolha uma opção:"
+    echo "1. Adicionar novo usuário"
+    echo "2. Remover um usuário"
+    echo "3. Listar todos os usuários"
+    echo "4. Sair"
+}
 
-    # Opção para repetir ou voltar ao menu
-    read -p "Deseja criar mais arquivos de texto? (s/n): " escolha
-    if [[ $escolha != "s" ]]; then
+while true; do
+    exibir_menu_opcao_3
+    read -p "Digite o número da opção desejada: " opcao
+    case $opcao in
+        1)
+            # Adicionar novo usuário
+            read -p "Digite o nome do novo usuário: " novo_usuario
+            sudo useradd "$novo_usuario" && echo "Usuário '$novo_usuario' adicionado com sucesso!" || echo "Erro ao adicionar o usuário."
+            ;;
+        2)
+            # Remover um usuário
+            read -p "Digite o nome do usuário a ser removido: " usuario_remover
+            sudo userdel "$usuario_remover" && echo "Usuário '$usuario_remover' removido com sucesso!" || echo "Erro ao remover o usuário."
+            ;;
+        3)
+            # Listar todos os usuários
+            echo "Lista de usuários do sistema:"
+            cut -d: -f1 /etc/passwd
+            ;;
+
+        4) 
+            #  Sair do Script
+            echo "Saindo..."
+            break
+            ;;
+        *)
+            # Opção inválida
+            echo "Opção inválida. Tente novamente."
+            ;;
+    esac
+
+    # Pergunta se o usuário deseja voltar ao menu principal
+    read -p "Deseja voltar ao menu principal? (s/n): " voltar
+    if [[ $voltar != "n" ]]; then
+        echo "Encerrando o script."
         break
     fi
 done
