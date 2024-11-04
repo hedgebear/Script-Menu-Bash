@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # Informações estáticas
+DATA=$(date +"%d de %B de %Y")
+HORA=$(date +"%H Horas e %M Minutos")
 echo "############################################################"
 echo "# IBMEC                                                    #"
 echo "# Sistemas Operacionais                 Semestre N de 2024 #"
@@ -8,12 +10,12 @@ echo "# Código: IBM8940                              Turma: 8001 #"
 echo "# Professor: Luiz Fernando T. de Farias                    #"
 echo "############################################################"
 echo "# Equipe Desenvolvedora:                                   #"
-echo "# Aluno: Lucas Fernandes Mosqueira 202203369016            #"
-echo "# Aluna: Beatriz Turi Pinto de Araújo 202203795211         #"
-echo "# Aluno: Lucas José Silva Serejo 202202714356              #"
+echo "# Aluno: Lucas Fernandes Mosqueira   202203369016          #"
+echo "# Aluna: Beatriz Turi Pinto de Araújo   202203795211       #"
+echo "# Aluno: Lucas José Silva Serejo       202202714356        #"
 echo "------------------------------------------------------------"
-echo "# Rio de Janeiro, $(date +"%d de %B de %Y")                #"
-echo "# Hora do Sistema: $(date +"%H Horas e %M Minutos")        #"
+printf "# Rio de Janeiro, %-40s #\n" "$DATA"
+printf "# Hora do Sistema: %-39s #\n" "$HORA"
 echo "############################################################"
 echo ""
 exibir_menu_principal(){
@@ -21,7 +23,7 @@ exibir_menu_principal(){
     echo "1) Gerenciamento de Diretórios e Arquivos"
     echo "2) Gerencimento de Disco"
     echo "3) Gerenciamento de Usuários"
-    echo "4) Opção interativa 4"
+    echo "4) Gerenciamento de Processos"
     echo "5) Finalizar o programa"
     echo ""
 }
