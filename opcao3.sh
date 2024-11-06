@@ -16,6 +16,7 @@ while true; do
             # Adicionar novo usuário
             read -p "Digite o nome do novo usuário: " novo_usuario
             sudo useradd "$novo_usuario" && echo "Usuário '$novo_usuario' adicionado com sucesso!" || echo "Erro ao adicionar o usuário."
+            #  TODO adicionar senha para usuário
             ;;
         2)
             # Remover um usuário
