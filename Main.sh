@@ -9,28 +9,28 @@ CYAN='\033[0;36m'
 WHITE='\033[1;37m'
 NC='\033[0m' 
 
-
-DATA=$(date +"%d de %B de %Y")
-HORA=$(date +"%H Horas e %M Minutos")
-
-# Informações estáticas
-echo -e "${CYAN}############################################################"
-echo "# IBMEC                                                    #"
-echo "# Sistemas Operacionais                 Semestre 2 de 2024 #"
-echo "# Código: IBM8940                              Turma: 8001 #"
-echo "# Professor: Luiz Fernando T. de Farias                    #"
-echo "############################################################"
-echo "# Equipe Desenvolvedora:                                   #"
-echo "# Aluno: Lucas Fernandes Mosqueira   202203369016          #"
-echo "# Aluna: Beatriz Turi Pinto de Araújo   202203795211       #"
-echo "# Aluno: Lucas José Silva Serejo       202202714356        #"
-echo "------------------------------------------------------------"
-printf "# Rio de Janeiro, %-40s #\n" "$DATA"
-printf "# Hora do Sistema: %-39s #\n" "$HORA"
-echo -e "############################################################${NC}"
-echo ""
+chmod +x opcao1.sh opcao2.sh opcao3.sh opcao4.sh
 
 exibir_menu_principal(){
+    DATA=$(date +"%d de %B de %Y")
+    HORA=$(date +"%H Horas e %M Minutos")
+
+        echo -e "${CYAN}############################################################"
+    echo "# IBMEC                                                    #"
+    echo "# Sistemas Operacionais                 Semestre 2 de 2024 #"
+    echo "# Código: IBM8940                              Turma: 8001 #"
+    echo "# Professor: Luiz Fernando T. de Farias                    #"
+    echo "############################################################"
+    echo "# Equipe Desenvolvedora:                                   #"
+    echo "# Aluno: Lucas Fernandes Mosqueira   202203369016          #"
+    echo "# Aluna: Beatriz Turi Pinto de Araújo   202203795211       #"
+    echo "# Aluno: Lucas José Silva Serejo       202202714356        #"
+    echo "------------------------------------------------------------"
+    printf "# Rio de Janeiro, %-40s #\n" "$DATA"
+    printf "# Hora do Sistema: %-39s #\n" "$HORA"
+    echo -e "############################################################${NC}"
+    echo ""
+
     echo -e "${YELLOW}Menu de Escolhas:${NC}"
     echo -e "${WHITE}1) Gerenciamento de Diretórios e Arquivos"
     echo "2) Relatórios de Disco e CPU"
