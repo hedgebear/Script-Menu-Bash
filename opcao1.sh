@@ -90,7 +90,7 @@ listar_conteudo() {
 excluir_arquivo_diretorio() {
     echo "O seu diretório atual: '$CURRENT'"
     echo "Conteúdo do Home: '$HOME' e seus subdiretórios serão apresentados"
-    echo "Pressione q para sair da tela de visualização dos conteúdos e prosseguir"
+    echo -e "${RED}Pressione q para sair da tela de visualização dos conteúdos e prosseguir${NC}"
     sleep 7
     ls -l $HOME/* | less
 
@@ -109,7 +109,7 @@ excluir_arquivo_diretorio() {
 renomear_arquivo_diretorio() {
     echo "O seu diretório atual: '$CURRENT'"
     echo "Conteúdo do Home: '$HOME' e seus subdiretórios serão apresentados"
-    echo "Pressione q para sair da tela de visualização dos conteúdos e prosseguir"
+    echo -e "${RED}Pressione q para sair da tela de visualização dos conteúdos e prosseguir${NC}"
     sleep 7
     ls -l $HOME/* | less
 
