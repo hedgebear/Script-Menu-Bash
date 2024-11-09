@@ -16,7 +16,7 @@ HORA=$(date +"%H Horas e %M Minutos")
 # Informações estáticas
 echo -e "${CYAN}############################################################"
 echo "# IBMEC                                                    #"
-echo "# Sistemas Operacionais                 Semestre N de 2024 #"
+echo "# Sistemas Operacionais                 Semestre 2 de 2024 #"
 echo "# Código: IBM8940                              Turma: 8001 #"
 echo "# Professor: Luiz Fernando T. de Farias                    #"
 echo "############################################################"

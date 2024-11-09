@@ -135,9 +135,8 @@ while true; do
         4) excluir_arquivo_diretorio ;;
         5) renomear_arquivo_diretorio ;;
         6) sair ;;
-        *)
-            echo "Opção inválida. Tente novamente."
-            ;;
+        *) echo "Opção inválida. Tente novamente."
+        continue;;
     esac
 
     # Pergunta ao usuário se ele quer continuar

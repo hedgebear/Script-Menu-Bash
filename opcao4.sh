@@ -72,25 +72,13 @@ while true; do
 
     # Verifica a opção escolhida e chama a função correspondente
     case $opcao in
-        1)  
-            listar_processos
-            ;;
-        2)
-            filtrar_processos
-            ;;
-        3)
-            matar_processo
-            ;;
-        4)
-            matar_processos_usuario
-            ;;
-        5)
-            sair
-            ;;
-        # Avisa queando a opção solicitada é inválida
-        *)
-            echo "Opção inválida. Tente novamente."
-            ;;
+        1) listar_processos;;
+        2) filtrar_processos;;
+        3) matar_processo;;
+        4) matar_processos_usuario;;
+        5) sair;;
+        *) echo "Opção inválida. Tente novamente."
+        continue;;
     esac
 
     read -p "Deseja realizar outra ação? (s/n): " continuar

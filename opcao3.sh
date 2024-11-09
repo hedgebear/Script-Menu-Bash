@@ -63,7 +63,8 @@ while true; do
         2) remover_usuario ;;
         3) listar_usuarios ;;
         4) sair ;;
-        *) echo "Opção inválida. Tente novamente." ;;
+        *) echo "Opção inválida. Tente novamente."
+        continue ;;
     esac
 
     # Pergunta ao usuário se ele quer continuar
