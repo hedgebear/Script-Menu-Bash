@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Buscando o diretório atual do usuário
 CURRENT=$(pwd)
 
 # Definição de cores
@@ -30,21 +31,25 @@ while true; do
     case $opcao in
         1)
             # Criar um diretório em um local de preferência
-            read -p "Digite o caminho onde deseja criar o diretório (pressione Enter para usar o diretório home '$CURRENT'): " DIR_PATH
+            echo "O seu diretório atual: '$CURRENT'"
+            read -p "Digite o caminho onde deseja criar o diretório dentro do diretório de trabalho (pressione Enter para usar o diretório home: '$HOME'): " DIR_PATH
             DIR_PATH=${DIR_PATH:-$HOME}  # Define o padrão como $HOME
-            if [ -d "$DIR_PATH" ]; then
+
+            if [[ "$DIR_PATH" == "$HOME"* ]]; then
                 read -p "Digite o nome do diretório a ser criado: " DIR_NAME
                 mkdir -p "$DIR_PATH/$DIR_NAME"
                 echo "O diretório '$DIR_NAME' foi criado em '$DIR_PATH'."
             else
-                echo "Erro: O caminho '$DIR_PATH' não existe. Por favor, tente novamente com um caminho válido."
+                echo "Erro: O caminho '$DIR_PATH' não é permitido acessar. Por favor, tente novamente com um caminho válido."
             fi
             ;;
         2)
             # Criar um arquivo em um local de preferência, seja arquivo regular, zip ou .tar
-            read -p "Digite o caminho onde deseja criar o arquivo (pressione Enter para usar o diretório home): " FILE_PATH
+            echo "O seu diretório atual: '$CURRENT'"
+            read -p "Digite o caminho onde deseja criar o arquivo dentro do diretório de trabalho (pressione Enter para usar o diretório home '$HOME'): " FILE_PATH
             FILE_PATH=${FILE_PATH:-$HOME}  # Define o padrão como $HOME
-            if [ -d "$FILE_PATH" ]; then
+
+            if [[ "$DIR_PATH" == "$HOME"* ]]; then
                 echo "Escolha o tipo de arquivo que deseja criar:"
                 echo "1. Arquivo normal"
                 echo "2. Arquivo GZIP"
@@ -78,7 +83,7 @@ while true; do
                         ;;
                 esac
             else
-                echo "Erro: O caminho '$FILE_PATH' não existe. Por favor, tente novamente com um caminho válido."
+                echo "Erro: O caminho '$FILE_PATH' não é permitdo acessar. Por favor, tente novamente com um caminho válido."
             fi
             ;;
         3)
