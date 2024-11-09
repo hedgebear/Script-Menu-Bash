@@ -29,6 +29,7 @@ printf "# Rio de Janeiro, %-40s #\n" "$DATA"
 printf "# Hora do Sistema: %-39s #\n" "$HORA"
 echo -e "############################################################${NC}"
 echo ""
+
 exibir_menu_principal(){
     echo -e "${YELLOW}Menu de Escolhas:${NC}"
     echo -e "${WHITE}1) Gerenciamento de Diretórios e Arquivos"
@@ -39,6 +40,11 @@ exibir_menu_principal(){
     echo ""
 }
 
+# Função para finalizar o programa
+finalizar_programa() {
+    echo -e "${RED}Finalizando o programa...${NC}"
+    exit 0
+}
 
 # Loop para opções
 while true; do
@@ -49,7 +55,7 @@ while true; do
         2) ./opcao2.sh ;;
         3) ./opcao3.sh ;;
         4) ./opcao4.sh ;;
-        5) echo -e "${RED}Finalizando o programa...${NC}"; exit 0 ;;
+        5) finalizar_programa ;;
         *) echo "Opção inválida, por favor escolha entre 1 e 5." ;;
     esac
 done
