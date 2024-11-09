@@ -9,7 +9,8 @@ CYAN='\033[0;36m'
 WHITE='\033[1;37m'
 NC='\033[0m' 
 
-exibir_menu_opcao_3(){
+# Função para exibir o menu de opções
+exibir_menu_opcao_3() {
     echo -e "${YELLOW}Escolha uma opção para o gerenciamento de usuários:${NC}"
     echo -e "${WHITE}1. Adicionar novo usuário"
     echo "2. Remover um usuário"
@@ -17,46 +18,59 @@ exibir_menu_opcao_3(){
     echo -e "4. Sair${NC}"
 }
 
+# Função para adicionar um novo usuário
+adicionar_usuario() {
+    read -p "Digite o nome do novo usuário: " novo_usuario
+    # Adiciona o usuário e define a senha
+    sudo useradd "$novo_usuario" && echo "Usuário '$novo_usuario' adicionado com sucesso!" || echo "Erro ao adicionar o usuário."
+    read -p "Digite a senha do novo usuário: " senha_novo_usuario
+    # Define a senha para o novo usuário
+    echo "$novo_usuario:$senha_novo_usuario" | sudo chpasswd
+    # Cria o diretório home do novo usuário
+    sudo mkdir -p /home/"$novo_usuario"
+    # Define as permissões corretas para o diretório home
+    sudo chown "$novo_usuario":"$novo_usuario" /home/"$novo_usuario"
+    # Permissões de leitura, escrita e execução para o usuário
+    sudo chmod 700 /home/"$novo_usuario"
+}
+
+# Função para remover um usuário
+remover_usuario() {
+    read -p "Digite o nome do usuário a ser removido: " usuario_remover
+    # Remove o usuário e seu diretório home
+    sudo userdel "$usuario_remover" && echo "Usuário '$usuario_remover' removido com sucesso!" || echo "Erro ao remover o usuário."
+}
+
+# Função para listar todos os usuários
+listar_usuarios() {
+    echo "Lista de usuários do sistema:"
+    # Extrai o nome dos usuários do arquivo /etc/passwd
+    cut -d: -f1 /etc/passwd
+}
+
+# Função para sair do script
+sair() {
+    echo "Saindo..."
+    exit 0
+}
+
+# Loop principal
 while true; do
     exibir_menu_opcao_3
     read -p "Digite o número da opção desejada: " opcao
     case $opcao in
-        1)
-            # Adicionar novo usuário
-            read -p "Digite o nome do novo usuário: " novo_usuario
-            sudo useradd "$novo_usuario" && echo "Usuário '$novo_usuario' adicionado com sucesso!" || echo "Erro ao adicionar o usuário."
-            read -p "Digite a senha do novo usuário: " senha_novo_usuario
-            echo "$novo_usuario:$senha_novo_usuario" | sudo chpasswd
-            sudo mkdir -p /home/"$novo_usuario"
-            sudo chown "$novo_usuario":"$novo_usuario" /home/"$novo_usuario"
-            sudo chmod 700 /home/"$novo_usuario"
-            ;;
-        2)
-            # Remover um usuário
-            read -p "Digite o nome do usuário a ser removido: " usuario_remover
-            sudo userdel "$usuario_remover" && echo "Usuário '$usuario_remover' removido com sucesso!" || echo "Erro ao remover o usuário."
-            ;;
-        3)
-            # Listar todos os usuários
-            echo "Lista de usuários do sistema:"
-            cut -d: -f1 /etc/passwd
-            ;;
-
-        4) 
-            #  Sair do Script
-            echo "Saindo..."
-            break
-            ;;
-        *)
-            # Opção inválida
-            echo "Opção inválida. Tente novamente."
-            ;;
+        1) adicionar_usuario ;;
+        2) remover_usuario ;;
+        3) listar_usuarios ;;
+        4) sair ;;
+        *) echo "Opção inválida. Tente novamente." ;;
     esac
 
     # Pergunta ao usuário se ele quer continuar
     read -p "Deseja realizar outra ação? (s/n): " continuar
-    #Transformar em minúsculo o input
+    # Converte a resposta para minúsculas
     continuar=${continuar,,}
+    # Verifica se o usuário deseja continuar ou encerrar o script
     if [[ $continuar != "s" ]]; then
         echo "Encerrando o script."
         break
