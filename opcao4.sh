@@ -10,7 +10,7 @@ WHITE='\033[1;37m'
 NC='\033[0m' 
 
 # Função para exibir o menu de opções
-exibir_menu_opcao_1() {
+exibir_menu_opcao_4() {
     echo -e "${YELLOW}Escolha uma opção para o gerenciamento de processos:${NC}"
     echo -e "${WHITE}1. Listar todos os processos"
     echo "2. Filtrar processos pelo nome"
@@ -67,7 +67,7 @@ sair() {
 
 # Cria um loop principal
 while true; do
-    exibir_menu_opcao_1
+    exibir_menu_opcao_4
     read -p "Digite o número da opção desejada: " opcao
 
     # Verifica a opção escolhida e chama a função correspondente
