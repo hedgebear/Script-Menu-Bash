@@ -1,6 +1,6 @@
 # 🛠️ Projeto de Gerenciamento de Sistemas
 
-Este projeto foi desenvolvido como parte do curso de **Sistemas Operacionais** no **IBMEC**, para o **2º semestre de 2024**. O script principal exibe um menu interativo para que o usuário possa escolher entre diversas opções de gerenciamento do sistema.
+Este projeto foi desenvolvido para a matéria **Sistemas Operacionais** no **IBMEC**, para o **2º semestre de 2024**. O script principal exibe um menu interativo para que o usuário possa escolher entre diversas opções de gerenciamento do sistema.
 
 ## 📋 Funcionalidades
 
@@ -37,7 +37,7 @@ Este projeto foi desenvolvido como parte do curso de **Sistemas Operacionais** n
 * **opcao3.sh**: Gerenciamento de usuários.
 * **opcao4.sh**: Gerenciamento de processos.
 
-## 👥 Equipe Desenvolvedora
+## 👥 Equipe 
 
 | Nome                          | Matrícula      |
 |-------------------------------|----------------|
