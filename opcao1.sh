@@ -89,8 +89,10 @@ listar_conteudo() {
 # Função para excluir arquivo ou diretório
 excluir_arquivo_diretorio() {
     echo "O seu diretório atual: '$CURRENT'"
-    echo "Conteúdo do Home: '$HOME'"
-    ls -l $HOME/*/ | less
+    echo "Conteúdo do Home: '$HOME' e seus subdiretórios serão apresentados"
+    echo "Pressione q para sair da tela de visualização dos conteúdos e prosseguir"
+    sleep 7
+    ls -l $HOME/* | less
 
     read -p "Digite o caminho do arquivo ou diretório a ser excluído: " DELETE_PATH
     if [ "$DELETE_PATH" == "$HOME" ]; then
@@ -106,8 +108,10 @@ excluir_arquivo_diretorio() {
 # Função para renomear arquivo ou diretório
 renomear_arquivo_diretorio() {
     echo "O seu diretório atual: '$CURRENT'"
-    echo "Conteúdo do Home: '$HOME'"
-    ls -l $HOME/*/ | less
+    echo "Conteúdo do Home: '$HOME' e seus subdiretórios serão apresentados"
+    echo "Pressione q para sair da tela de visualização dos conteúdos e prosseguir"
+    sleep 7
+    ls -l $HOME/* | less
 
     read -p "Digite o caminho do arquivo ou diretório que deseja renomear: " OLD_PATH
     if [ "$OLD_PATH" == "$HOME" ]; then
