@@ -15,9 +15,9 @@ NC='\033[0m'
 # Função para criar diretório
 criar_diretorio() {
     echo "O seu diretório atual: '$CURRENT'"
-    read -p "Digite o caminho onde deseja criar o diretório (pressione Enter para usar o diretório home '$HOME'): " DIR_PATH
+    read -p "Digite o caminho onde deseja criar o diretório a partir do Home (pressione Enter para usar o diretório Home '$HOME'): " DIR_PATH
     DIR_PATH=${DIR_PATH:-$HOME}  # Define o padrão como $HOME
-    if [ -d "$DIR_PATH" ]; then
+    if [[ "$DIR_PATH" == "$HOME"* ]]; then
         read -p "Digite o nome do diretório a ser criado: " DIR_NAME
         mkdir -p "$DIR_PATH/$DIR_NAME"
         echo "O diretório '$DIR_NAME' foi criado em '$DIR_PATH'."
@@ -28,9 +28,10 @@ criar_diretorio() {
 
 # Função para criar arquivo
 criar_arquivo() {
-    read -p "Digite o caminho onde deseja criar o arquivo (pressione Enter para usar o diretório home): " FILE_PATH
+    echo "O seu diretório atual: '$CURRENT'"
+    read -p "Digite o caminho onde deseja criar o arquivo a partir do Home (pressione Enter para usar o diretório Home '$HOME'): " FILE_PATH
     FILE_PATH=${FILE_PATH:-$HOME}  # Define o padrão como $HOME
-    if [ -d "$FILE_PATH" ]; then
+    if [[ "$FILE_PATH" == "$HOME"* ]]; then
         echo "Escolha o tipo de arquivo que deseja criar:"
         echo "1. Arquivo normal"
         echo "2. Arquivo GZIP"
@@ -70,6 +71,11 @@ criar_arquivo() {
 
 # Função para listar conteúdo do diretório
 listar_conteudo() {
+    echo "O seu diretório atual: '$CURRENT'"
+    echo "O seu diretório Home: '$HOME'"
+    echo "Diretórios presentes no Home:"
+    ls -d $HOME/*/
+
     read -p "Digite o caminho do diretório que deseja listar: " LIST_PATH
     if [ -d "$LIST_PATH" ]; then
         echo "Conteúdo do diretório '$LIST_PATH':"
@@ -81,6 +87,10 @@ listar_conteudo() {
 
 # Função para excluir arquivo ou diretório
 excluir_arquivo_diretorio() {
+    echo "O seu diretório atual: '$CURRENT'"
+    echo "Conteúdo do Home: '$HOME'"
+    ls -l $HOME/*/
+
     read -p "Digite o caminho do arquivo ou diretório a ser excluído: " DELETE_PATH
     if [ "$DELETE_PATH" == "$HOME" ]; then
         echo -e "${RED}Erro: O diretório '$HOME' não pode ser excluído por segurança.${NC}"
@@ -94,6 +104,10 @@ excluir_arquivo_diretorio() {
 
 # Função para renomear arquivo ou diretório
 renomear_arquivo_diretorio() {
+    echo "O seu diretório atual: '$CURRENT'"
+    echo "Conteúdo do Home: '$HOME'"
+    ls -l $HOME/*/ 
+
     read -p "Digite o caminho do arquivo ou diretório que deseja renomear: " OLD_PATH
     if [ "$OLD_PATH" == "$HOME" ]; then
         echo -e "${RED}Erro: O diretório '$HOME' não pode ser renomeado por segurança.${NC}"

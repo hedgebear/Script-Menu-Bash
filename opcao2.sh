@@ -12,7 +12,7 @@ WHITE='\033[1;37m'
 NC='\033[0m' 
 
 exibir_menu_opcao_2(){
-    echo -e "${YELLOW}Escolha uma opção para relatório de uso do disco:${NC}"
+    echo -e "${YELLOW}Escolha uma opção para relatórios de uso do disco ou CPU:${NC}"
     echo -e "${WHITE}1. Visão Geral do uso do disco"
     echo "2. Visão Geral do uso da CPU"
     echo "3. Salvar relatório em arquivo"
@@ -35,7 +35,7 @@ visao_geral_CPU(){
 salvamento_relatorios(){
     
     echo "O seu diretório atual é '$CURRENT'"
-    read -p "Digite o diretório onde deseja salvar o relatório (pressione Enter para salvar no diretório Home '$HOME'): " DIR_PATH
+    read -p "Digite o diretório onde deseja salvar o relatório a partir do Home (pressione Enter para salvar no diretório Home '$HOME'): " DIR_PATH
     DIR_PATH=${DIR_PATH:-$HOME}
     echo ""
     echo "Escolha o tipo de relatório para salvar:"

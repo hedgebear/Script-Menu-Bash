@@ -33,7 +33,7 @@ echo ""
 exibir_menu_principal(){
     echo -e "${YELLOW}Menu de Escolhas:${NC}"
     echo -e "${WHITE}1) Gerenciamento de Diretórios e Arquivos"
-    echo "2) Gerencimento de Disco"
+    echo "2) Relatórios de Disco e CPU"
     echo "3) Gerenciamento de Usuários"
     echo "4) Gerenciamento de Processos"
     echo -e "5) Finalizar o programa${NC}"
