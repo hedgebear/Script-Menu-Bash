@@ -76,7 +76,8 @@ listar_conteudo() {
     echo "Diretórios presentes no Home:"
     ls -d $HOME/*/
 
-    read -p "Digite o caminho do diretório que deseja listar: " LIST_PATH
+    read -p "Digite o caminho do diretório que deseja listar (pressione Enter para usar o diretório Home '$HOME'): " LIST_PATH
+    LIST_PATH=${LIST_PATH:-$HOME}
     if [ -d "$LIST_PATH" ]; then
         echo "Conteúdo do diretório '$LIST_PATH':"
         ls -l "$LIST_PATH"
@@ -89,7 +90,7 @@ listar_conteudo() {
 excluir_arquivo_diretorio() {
     echo "O seu diretório atual: '$CURRENT'"
     echo "Conteúdo do Home: '$HOME'"
-    ls -l $HOME/*/
+    ls -l $HOME/*/ | less
 
     read -p "Digite o caminho do arquivo ou diretório a ser excluído: " DELETE_PATH
     if [ "$DELETE_PATH" == "$HOME" ]; then
@@ -106,13 +107,13 @@ excluir_arquivo_diretorio() {
 renomear_arquivo_diretorio() {
     echo "O seu diretório atual: '$CURRENT'"
     echo "Conteúdo do Home: '$HOME'"
-    ls -l $HOME/*/ 
+    ls -l $HOME/*/ | less
 
     read -p "Digite o caminho do arquivo ou diretório que deseja renomear: " OLD_PATH
     if [ "$OLD_PATH" == "$HOME" ]; then
         echo -e "${RED}Erro: O diretório '$HOME' não pode ser renomeado por segurança.${NC}"
     elif [ -e "$OLD_PATH" ]; then
-        read -p "Digite o novo nome: " NEW_PATH
+        read -p "Digite o novo nome (Coloque o caminho completo): " NEW_PATH
         mv "$OLD_PATH" "$NEW_PATH"
         echo "Renomeado para '$NEW_PATH'."
     else
