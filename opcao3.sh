@@ -21,16 +21,17 @@ exibir_menu_opcao_3() {
 # Função para adicionar um novo usuário
 adicionar_usuario() {
     read -p "Digite o nome do novo usuário: " novo_usuario
-    # Adiciona o usuário e define a senha
-    sudo useradd "$novo_usuario" && echo "Usuário '$novo_usuario' adicionado com sucesso!" || echo "Erro ao adicionar o usuário."
-    read -p "Digite a senha do novo usuário: " senha_novo_usuario
+    # Adiciona o usuário, cria o diretório home e define o shell padrão
+    sudo useradd -m -s /bin/bash "$novo_usuario" && echo "Usuário '$novo_usuario' adicionado com sucesso!" || echo "Erro ao adicionar o usuário."
+    
     # Define a senha para o novo usuário
+    read -p "Digite a senha do novo usuário: " senha_novo_usuario
     echo "$novo_usuario:$senha_novo_usuario" | sudo chpasswd
-    # Cria o diretório home do novo usuário
-    sudo mkdir -p /home/"$novo_usuario"
-    # Define as permissões corretas para o diretório home
+
+    # Garante que o usuário tenha a propriedade do diretório home
     sudo chown "$novo_usuario":"$novo_usuario" /home/"$novo_usuario"
-    # Permissões de leitura, escrita e execução para o usuário
+
+    # Define as permissões corretas para o diretório home
     sudo chmod 700 /home/"$novo_usuario"
 }
 
