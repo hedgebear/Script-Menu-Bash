@@ -29,7 +29,7 @@ listar_processos() {
 
 # Função para filtrar processos pelo nome
 filtrar_processos() {
-    echo "Digite o nome do processo que deseja filtrar:"
+    echo "Digite o PID do processo que deseja filtrar:"
     read processo
     echo "Processos com o nome '$processo' (PID, USER, %CPU, %MEM, COMMAND):"
     # Filtra os processos com base no nome fornecido
@@ -55,7 +55,7 @@ matar_processos_usuario() {
     read usuario
     echo "Finalizando todos os processos do usuário '$usuario'..."
     # Filtra os processos com base no nome do usuário e finaliza-os
-    ps aux | grep "^$usuario" | awk '{print $2}' | xargs kill -9
+    ps aux | grep "^$usuario" | awk '{print $2}' | xargs sudo kill -9
     echo "Todos os processos do usuário '$usuario' foram finalizados."
 }
 
