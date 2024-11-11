@@ -31,7 +31,7 @@ Este projeto foi desenvolvido para a matéria **Sistemas Operacionais** no **IBM
 
 ## 📂 Estrutura do Projeto
 
-* **menu_principal.sh**: Script principal que exibe o menu e chama os scripts de cada funcionalidade.
+* **Main.sh**: Script principal que exibe o menu e chama os scripts de cada funcionalidade.
 * **opcao1.sh**: Gerenciamento de diretórios e arquivos.
 * **opcao2.sh**: Relatórios de uso de disco e CPU.
 * **opcao3.sh**: Gerenciamento de usuários.
